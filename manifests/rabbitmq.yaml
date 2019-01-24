@@ -58,6 +58,8 @@ spec:
     name: exporter
     targetPort: exporter
     protocol: TCP
+  - port: 4369
+    name: epmd
   selector:
     name: rabbitmq
 ---
@@ -120,6 +122,8 @@ spec:
     name: exporter
     targetPort: exporter
     protocol: TCP
+  - port: 4369
+    name: epmd
   selector:
     name: rabbitmq
 ---
@@ -182,5 +186,7 @@ spec:
     name: exporter
     targetPort: exporter
     protocol: TCP
+  - port: 4369
+    name: epmd
   selector:
     name: rabbitmq
