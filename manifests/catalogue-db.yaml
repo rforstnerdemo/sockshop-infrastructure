@@ -1,5 +1,5 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalogue-db
@@ -8,6 +8,9 @@ metadata:
   namespace: dev
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: catalogue-db
   template:
     metadata:
       labels:
@@ -39,7 +42,7 @@ spec:
   selector:
     name: catalogue-db
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalogue-db
@@ -48,6 +51,9 @@ metadata:
   namespace: staging
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: catalogue-db
   template:
     metadata:
       labels:
@@ -79,7 +85,7 @@ spec:
   selector:
     name: catalogue-db
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalogue-db
@@ -88,6 +94,9 @@ metadata:
   namespace: production
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: catalogue-db
   template:
     metadata:
       labels:
