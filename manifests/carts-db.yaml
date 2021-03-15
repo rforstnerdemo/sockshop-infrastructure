@@ -12,13 +12,18 @@ spec:
       storage: 100Mi
 #  storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: carts-db
   namespace: dev
+  labels:
+    name: carts-db
 spec:
   replicas: 1
+  selector:
+     matchLabels:
+       name: carts-db
   strategy:
     type: Recreate
   template:
@@ -67,13 +72,18 @@ spec:
       storage: 100Mi
   #storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: carts-db
   namespace: staging
+  labels:
+    name: carts-db
 spec:
   replicas: 1
+  selector:
+     matchLabels:
+       name: carts-db
   strategy:
     type: Recreate
   template:
@@ -122,13 +132,18 @@ spec:
       storage: 100Mi
  # storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: carts-db
   namespace: production
+  labels:
+   name: carts-db
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: carts-db
   strategy:
     type: Recreate
   template:
