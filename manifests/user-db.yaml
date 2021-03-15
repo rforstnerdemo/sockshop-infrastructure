@@ -12,15 +12,20 @@ spec:
       storage: 100Mi
 #  storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-db
   namespace: dev
+  labels:
+    name: user-db
 spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: user-db
   template:
     metadata:
       labels:
@@ -67,15 +72,20 @@ spec:
       storage: 100Mi
 #  storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-db
   namespace: staging
+  labels:
+    name: user-db
 spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: user-db
   template:
     metadata:
       labels:
@@ -122,15 +132,20 @@ spec:
       storage: 100Mi
 #  storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-db
   namespace: production
+  labels:
+    name: user-db
 spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: user-db
   template:
     metadata:
       labels:
