@@ -17,8 +17,13 @@ kind: Deployment
 metadata:
   name: carts-db
   namespace: dev
+  labels:
+    name: carts-db
 spec:
   replicas: 1
+  selector:
+     matchLabels:
+       name: carts-db
   strategy:
     type: Recreate
   template:
@@ -72,8 +77,13 @@ kind: Deployment
 metadata:
   name: carts-db
   namespace: staging
+  labels:
+    name: carts-db
 spec:
   replicas: 1
+  selector:
+     matchLabels:
+       name: carts-db
   strategy:
     type: Recreate
   template:
@@ -127,8 +137,13 @@ kind: Deployment
 metadata:
   name: carts-db
   namespace: production
+  labels:
+   name: carts-db
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: carts-db
   strategy:
     type: Recreate
   template:
