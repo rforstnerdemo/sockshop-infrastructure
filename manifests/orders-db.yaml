@@ -12,15 +12,20 @@ spec:
       storage: 100Mi
  # storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-db
   namespace: dev
+  labels:
+    name: orders-db
 spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: orders-db
   template:
     metadata:
       labels:
@@ -67,15 +72,20 @@ spec:
       storage: 100Mi
 #  storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-db
   namespace: staging
+  labels:
+    name: orders-db
 spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: orders-db
   template:
     metadata:
       labels:
@@ -122,15 +132,20 @@ spec:
       storage: 100Mi
 #  storageClassName: gold
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-db
   namespace: production
+  labels:
+    name: orders-db
 spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: orders-db
   template:
     metadata:
       labels:
